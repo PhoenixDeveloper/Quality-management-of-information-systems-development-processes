@@ -10,7 +10,7 @@ namespace KRTestWork
     {
         private static List<User> userStorage;
 
-        internal static void AddUser(User user)
+        public static void AddUser(User user)
         {
             userStorage.Add(user);
         }
