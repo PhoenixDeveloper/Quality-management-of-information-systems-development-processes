@@ -15,7 +15,7 @@ namespace KRTestWork
 
         public void TestAddUser()
         {
-            UserStorage.addUser(new User("login", "password"));
+            UserStorage.AddUser(new User("login", "password"));
         }
     }
 }
