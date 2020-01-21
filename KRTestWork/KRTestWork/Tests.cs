@@ -12,5 +12,10 @@ namespace KRTestWork
         {
             User user = new User("login", "password");
         }
+
+        public void TestAddUser()
+        {
+            UserStorage.addUser(new User("login", "password"));
+        }
     }
 }
