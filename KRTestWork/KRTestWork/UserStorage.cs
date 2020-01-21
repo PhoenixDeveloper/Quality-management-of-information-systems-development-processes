@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace KRTestWork
 {
     class UserStorage
     {
-        private static List<User> userStorage;
+        private static List<User> userStorage = new List<User>();
         private static User currentUser;
 
         public static void AddUser(User user)
@@ -59,6 +60,27 @@ namespace KRTestWork
             else
             {
                 Console.WriteLine("Password incorrect");
+            }
+        }
+
+        public static void ReadFile(string path)
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader($@"{path}", Encoding.Default))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] userStringArray = line.Split('-');
+                        UserStorage.AddUser(new User(userStringArray[0], userStringArray[1]));
+                    }
+                }
+                Console.WriteLine("Чтение выполнено");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }
