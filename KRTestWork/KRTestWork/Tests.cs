@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,6 +34,14 @@ namespace KRTestWork
             User user = new User("login", "password");
 
             UserStorage.DeleteUser(user, "password");
+        }
+
+        public void TestChangeNameFile()
+        {
+            Console.WriteLine("Введите имя файла(без .txt)");
+            string nameFile = Console.ReadLine()+".txt";
+
+            UserStorage.ReadFile($@"{nameFile}");
         }
     }
 }

@@ -10,6 +10,13 @@ namespace KRTestWork
     {
         static void Main(string[] args)
         {
+            Tests tests = new Tests();
+            tests.TestCreateUser();
+            tests.TestAddUser();
+            tests.TestLoginUser();
+            tests.TestDeleteUser();
+            tests.TestChangeNameFile();
+            Console.ReadKey();
         }
     }
 }
