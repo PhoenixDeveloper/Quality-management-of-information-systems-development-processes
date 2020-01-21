@@ -29,5 +29,12 @@ namespace KRTestWork
                 Console.WriteLine("Access denied");
             }
         }
+
+        public void TestDeleteUser()
+        {
+            User user = new User("login", "password");
+
+            UserStorage.DeleteUser(user, "password");
+        }
     }
 }
