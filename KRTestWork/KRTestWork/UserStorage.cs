@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +40,26 @@ namespace KRTestWork
                 Console.WriteLine("Access denied");
             }
             return false;
+        }
+
+        public static void DeleteUser(User user, string password)
+        {
+            if (user.password == password)
+            {
+                if (userStorage.Contains(user))
+                {
+                    userStorage.Remove(user);
+                    Console.WriteLine("Delete user");
+                }
+                else
+                {
+                    Console.WriteLine("User doesn't exist");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Password incorrect");
+            }
         }
     }
 }
