@@ -8,8 +8,8 @@ namespace KRTestWork
 {
     class User
     {
-        private string login;
-        private string password;
+        public readonly string login;
+        public readonly string password;
 
         public User(string login, string password)
         {
