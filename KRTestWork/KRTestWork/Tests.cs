@@ -19,7 +19,7 @@ namespace KRTestWork
 
         public void TestLoginUser()
         {
-            if (UserStorage.Login(new User("login", "password")))
+            if (UserStorage.Login("login", "password"))
             {
                 Console.WriteLine("Access granted");
             }

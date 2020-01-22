@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Security.Cryptography;
+using System.Data.Services;
 
 namespace KRTestWork
 {
@@ -16,18 +18,18 @@ namespace KRTestWork
             userStorage.Add(user);
         }
 
-        public static bool Login(User user)
+        public static bool Login(string login, string password)
         {
             bool trueLogin = false;
             foreach (var element in userStorage)
             {
-                if (user.login == element.login)
+                if (login == element.login)
                 {
                     trueLogin = true;
-                    if (VerifyHashedPassword(element.password, user.password))
+                    if (VerifyHashedPassword(element.password, password))
                     {
                         Console.WriteLine("Access granted");
-                        currentUser = user;
+                        currentUser = element;
                         return true;
                     }
                 }
@@ -73,7 +75,7 @@ namespace KRTestWork
                     while ((line = sr.ReadLine()) != null)
                     {
                         string[] userStringArray = line.Split('-');
-                        UserStorage.AddUser(new User(userStringArray[0], userStringArray[1]));
+                        UserStorage.AddUser(new User(userStringArray[0], userStringArray[1], false));
                     }
                 }
                 Console.WriteLine("Чтение выполнено");
@@ -128,6 +130,18 @@ namespace KRTestWork
                 buffer4 = bytes.GetBytes(0x20);
             }
             return ByteArraysEqual(buffer3, buffer4);
+        }
+
+        private static bool ByteArraysEqual(byte[] b1, byte[] b2)
+        {
+            if (b1 == b2) return true;
+            if (b1 == null || b2 == null) return false;
+            if (b1.Length != b2.Length) return false;
+            for (int i = 0; i < b1.Length; i++)
+            {
+                if (b1[i] != b2[i]) return false;
+            }
+            return true;
         }
     }
 }

@@ -11,10 +11,10 @@ namespace KRTestWork
         public readonly string login;
         public readonly string password;
 
-        public User(string login, string password)
+        public User(string login, string password, bool isNeedHash = true)
         {
             this.login = login;
-            this.password = UserStorage.HashPassword(password);
+            this.password = isNeedHash ? UserStorage.HashPassword(password) : password;
         }
     }
 }
