@@ -14,7 +14,7 @@ namespace KRTestWork
         public User(string login, string password)
         {
             this.login = login;
-            this.password = password;
+            this.password = UserStorage.HashPassword(password);
         }
     }
 }
